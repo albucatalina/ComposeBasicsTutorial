@@ -1,4 +1,4 @@
-package com.example.learntogether.ui.theme
+package com.example.composebasictutorial.ui.theme
 
 import android.app.Activity
 import android.os.Build

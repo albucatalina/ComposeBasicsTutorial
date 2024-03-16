@@ -1,4 +1,4 @@
-package com.example.learntogether
+package com.example.composebasictutorial
 
 import org.junit.Test
 

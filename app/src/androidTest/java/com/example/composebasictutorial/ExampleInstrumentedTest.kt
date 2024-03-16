@@ -1,4 +1,4 @@
-package com.example.learntogether
+package com.example.composebasictutorial
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

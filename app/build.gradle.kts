@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.learntogether"
+    namespace = "com.example.composebasictutorial"
     compileSdk = 34
 
     defaultConfig {

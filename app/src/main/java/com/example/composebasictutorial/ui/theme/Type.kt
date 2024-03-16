@@ -1,4 +1,4 @@
-package com.example.learntogether.ui.theme
+package com.example.composebasictutorial.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
