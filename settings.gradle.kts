@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Learn Together"
-include(":app")
- 
+include(":learntogether")
+include(":taskmanager")
