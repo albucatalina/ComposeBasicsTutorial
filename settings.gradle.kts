@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Learn Together"
 include(":learntogether")
 include(":taskmanager")
+include(":composequadrant")
