@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.diceroller.ui.theme.LearnTogetherTheme
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,17 +56,31 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier){
         5 -> R.drawable.dice_5
         else -> R.drawable.dice_6
     }
+    var buttonClicked by remember {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(buttonClicked){
+        if(buttonClicked){
+            repeat(6) {
+                diceValue = (1..6).random()
+                delay(100)
+            }
+        }
+        buttonClicked = false
+    }
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             painter = painterResource(id = imageResource),
-            contentDescription = "$diceValue"
+            contentDescription = "$diceValue",
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            diceValue = (1..6).random()
+            buttonClicked = true
         }) {
             Text(stringResource(id = R.string.roll))
         }
