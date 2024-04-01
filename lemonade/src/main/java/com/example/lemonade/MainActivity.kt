@@ -50,20 +50,47 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Lemonade(modifier: Modifier = Modifier){
+    var imageIndex by remember { mutableStateOf(0) }
+    val images = listOf(
+        R.drawable.lemon_tree,
+        R.drawable.lemon_squeeze,
+        R.drawable.lemon_drink,
+        R.drawable.lemon_restart
+    )
+    val stringResources = listOf(
+        R.string.lemon_tree_text,
+        R.string.lemon_squeeze_text,
+        R.string.lemon_drink_text,
+        R.string.lemon_restart_text
+    )
+    val contentDescriptions = listOf(
+        R.string.cd_lemon_tree,
+        R.string.cd_lemon_squeeze,
+        R.string.cd_lemon_drink,
+        R.string.cd_lemon_restart
+    )
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.lemon_tree),
-            contentDescription = stringResource(id = R.string.cd_image1),
+            painter = painterResource(id = images[imageIndex]),
+            contentDescription = stringResource(id = contentDescriptions[imageIndex]),
+            Modifier.clickable {
+                if(imageIndex == 3)
+                    imageIndex = 0
+                else
+                    imageIndex++
+            }
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = stringResource(id = R.string.screen1_text),
+            text = stringResource(id = stringResources[imageIndex]),
             fontSize = 18.sp
         )
     }
