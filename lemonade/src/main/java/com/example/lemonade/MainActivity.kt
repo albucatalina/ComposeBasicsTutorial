@@ -50,7 +50,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Lemonade(modifier: Modifier = Modifier){
-    var imageIndex by remember { mutableStateOf(0) }
+    var imageIndex by remember { mutableIntStateOf(0) }
+    var squeezeTimes = (2..4).random()
+    var squeezeCounter by remember {
+        mutableIntStateOf(0)
+    }
     val images = listOf(
         R.drawable.lemon_tree,
         R.drawable.lemon_squeeze,
@@ -79,11 +83,19 @@ fun Lemonade(modifier: Modifier = Modifier){
         Image(
             painter = painterResource(id = images[imageIndex]),
             contentDescription = stringResource(id = contentDescriptions[imageIndex]),
-            Modifier.clickable {
-                if(imageIndex == 3)
-                    imageIndex = 0
-                else
-                    imageIndex++
+            modifier = Modifier
+                .clickable {
+                if (imageIndex == 1 && squeezeCounter < squeezeTimes)
+                    squeezeCounter++
+                else {
+                    if (imageIndex == 3) {
+                        imageIndex = 0
+                        squeezeTimes = (2..4).random()
+                        squeezeCounter = 0
+                    }
+                    else
+                        imageIndex++
+                }
             }
         )
 
